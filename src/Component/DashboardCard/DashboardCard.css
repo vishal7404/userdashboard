@@ -39,8 +39,10 @@
 }
 
 #dashboardCard h1 {
-    font-weight: 300;
+    font-weight: 500;
     margin-bottom: 20px;
+    font-size: 30px;
+    color: #383636;
 }
 
 #aboutDashCard {

@@ -110,7 +110,7 @@
     width: 100%;
     height: 2px;
     background: var(--primary);
-    transition: width .3s;
+    transition: width 0.3s;
     margin-top: 5px;
 }
 

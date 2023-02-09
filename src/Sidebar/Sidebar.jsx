@@ -3,6 +3,7 @@ import { Nav } from "react-bootstrap";
 import { withRouter } from "react-router";
 import "./Sidebar.css"
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Logo from "../Images/logo.png"
 import { IoMdArrowBack } from 'react-icons/io';
@@ -38,6 +39,28 @@ import { MdSupportAgent } from 'react-icons/md';
 import { NavLink } from "react-router-dom";
 import Check from "../Pages/Check/Check";
 import NavPages from "../NavPages";
+import KYC from "./../Pages/KYC/KYC"
+import WelcomeLetter from "../Pages/WelcomeLetter/WelcomeLetter";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import ProfilePage from "../Pages/ProfilePage/ProfilePage";
+import EditProfile from "../Pages/EditProfile/EditProfile";
+import Accounts from "../Pages/Accounts/Accounts";
+import DirectPage from "../Pages/DirectPage/DirectPage";
+import Generation from "../Pages/Generation/Generation";
+import Tree from "../Pages/Tree/Tree";
+import WithdrawalReport from "../Pages/WithdrawalReport/WithdrawalReport";
+import PinBox from "../Pages/PinBox/PinBox";
+import PinTransfer from "../Pages/PinTransfer/PinTransfer";
+import PinHistory from "../Pages/PinHistory/PinHistory";
+import MemberTopup from "../Pages/MemberTopup/MemberTopup";
+import DirectIncome from "../Pages/DirectIncome/DirectIncome";
+import LevelIncome from "../Pages/LevelIncome/LevelIncome";
+import RewardIncome from "../Pages/RewardIncome/RewardIncome";
+import Orders from "../Pages/Orders/Orders";
+import Rewards from "../Pages/Rewards/Rewards";
+import ReportPage from "../Pages/ReportPage/ReportPage";
+import NewsEvent from "../Pages/NewsEvent/NewsEvent";
+import Support from "../Pages/Support/Support";
 
 const Sidebar = () => {
     const [dropdown, setDropdown] = useState("none");
@@ -55,17 +78,17 @@ const Sidebar = () => {
     const [withdrawalDropdownIcon, setWithdrawalDropdownIcon] = useState("0deg");
 
     const [leftMargin, setLeftMargin] = useState("260px");
-    const [toggle, setToggle] = useState("none");
+    const [toggle, setToggle] = useState("0");
     const [active, setActive] = useState("");
     // transform: rotate(180deg);
     const [activeSide, setActiveSide] = useState("activeSidebar");
     const [currentPage, setCurrentPage] = useState("dashboard");
-
+    const [activePage, setActivePage] = useState(<Dashboard />)
     return (
         <React.Fragment>
             <Container fluid className="p-0">
 
-                <div id="sidebar-wrapper" className="" style={{ display: toggle }}>
+                <div id="sidebar-wrapper" className="" style={{ left: toggle }}>
                     <div id="sidebarTopDiv">
                         <div className="logo" >
                             <img src={Logo} alt="logo.png" />
@@ -81,13 +104,10 @@ const Sidebar = () => {
                             <h3 className="m-0">User Name <div></div></h3>
                             <p>CP159782 </p>
                         </div>
-                        <NavLink to="/">
-
-                            <div className={`items ${currentPage === "dashboard" ? "activeSidebar" : "noclass"}`} onClick={() => setCurrentPage("dashboard")}>
-                                <i><AiFillHome /></i>
-                                <h4 className="m-0">Dashboard</h4>
-                            </div>
-                        </NavLink>
+                        <div className={`items ${currentPage === "dashboard" ? "activeSidebar" : "noclass"}`} onClick={() => (setCurrentPage("dashboard"), setActivePage(<Dashboard />))}>
+                            <i><AiFillHome /></i>
+                            <h4 className="m-0">Dashboard</h4>
+                        </div>
 
                         {/* --------------------------My Account------------------------ */}
                         <div className="dropdownitems" onClick={() => dropdown === "none" ? (setDropdown("block"), setDropdownIcon("180deg")) : (setDropdown("none"), setDropdownIcon("0deg"))}>
@@ -97,30 +117,29 @@ const Sidebar = () => {
                                 <i className="dropicon" style={{ transform: `rotate(${dropdownIcon})` }} ><BsChevronDown /></i>
                             </div>
                             <div className="dropdown" style={{ display: dropdown }}>
-                                <NavLink to="/welcome-letter">
-                                    <div className="items" onClick={() => setCurrentPage("welcomeLetter")}>
-                                        <i><GiLetterBomb /></i>
-                                        <h4 className="m-0">Welcome Letter</h4>
-                                    </div>
-                                </NavLink>
-                                <NavLink to="/profile-page">
-                                    <div className="items" onClick={() => setCurrentPage("profile")}>
-                                        <i><CgProfile /></i>
-                                        <h4 className="m-0">Profile</h4>
-                                    </div>
-                                </NavLink>
-                                <NavLink to="edit-profile">
-                                    <div className="items" onClick={() => setCurrentPage("editProfile")}>
-                                        <i><FiEdit /></i>
-                                        <h4 className="m-0">Edit Profile</h4>
-                                    </div>
-                                </NavLink>
-                                <NavLink to="accounts">
-                                    <div className="items" onClick={() => setCurrentPage("account")}>
-                                        <i><MdAccountBalance /></i>
-                                        <h4 className="m-0">Accounts</h4>
-                                    </div>
-                                </NavLink>
+
+                                <div className="items" onClick={() => (setCurrentPage("welcomeLetter"), setActivePage(<WelcomeLetter />))}>
+                                    <i><GiLetterBomb /></i>
+                                    <h4 className="m-0">Welcome Letter</h4>
+                                </div>
+
+
+                                <div className="items" onClick={() => (setCurrentPage("profile"), setActivePage(<ProfilePage />))}>
+                                    <i><CgProfile /></i>
+                                    <h4 className="m-0">Profile</h4>
+                                </div>
+
+
+                                <div className="items" onClick={() => (setCurrentPage("editProfile"), setActivePage(<EditProfile />))}>
+                                    <i><FiEdit /></i>
+                                    <h4 className="m-0">Edit Profile</h4>
+                                </div>
+
+                                <div className="items" onClick={() => (setCurrentPage("account"), setActivePage(<Accounts />))}>
+                                    <i><MdAccountBalance /></i>
+                                    <h4 className="m-0">Accounts</h4>
+                                </div>
+
                             </div>
                         </div>
                         {/* --------------------------------My Genelogy--------------------------------- */}
@@ -132,24 +151,23 @@ const Sidebar = () => {
                                 <i className="dropicon" style={{ transform: `rotate(${genelogyDropdownIcon})` }} ><BsChevronDown /></i>
                             </div>
                             <div className="dropdown" style={{ display: genelogyDropdown }}>
-                                <NavLink to="/direct">
-                                    <div className="items" onClick={() => setCurrentPage("direct")}>
-                                        <i><GiLetterBomb /></i>
-                                        <h4 className="m-0">Direct</h4>
-                                    </div>
-                                </NavLink>
-                                <NavLink to="/generation">
-                                    <div className="items" onClick={() => setCurrentPage("generation")}>
-                                        <i><CgProfile /></i>
-                                        <h4 className="m-0">Generation</h4>
-                                    </div>
-                                </NavLink>
-                                <NavLink to="/tree">
-                                    <div className="items" onClick={() => setCurrentPage("tree")}>
-                                        <i><ImTree /></i>
-                                        <h4 className="m-0">Tree</h4>
-                                    </div>
-                                </NavLink>
+
+                                <div className="items" onClick={() => (setCurrentPage("direct"), setActivePage(<DirectPage />))}>
+                                    <i><GiLetterBomb /></i>
+                                    <h4 className="m-0">Direct</h4>
+                                </div>
+
+                                <div className="items" onClick={() => (setCurrentPage("generation"), setActivePage(<Generation />))}>
+                                    <i><CgProfile /></i>
+                                    <h4 className="m-0">Generation</h4>
+                                </div>
+
+
+                                <div className="items" onClick={() => (setCurrentPage("tree"), setActivePage(<Tree />))}>
+                                    <i><ImTree /></i>
+                                    <h4 className="m-0">Tree</h4>
+                                </div>
+
                             </div>
                         </div>
                         {/* -------------------Withdrawal------------------------------------ */}
@@ -161,21 +179,19 @@ const Sidebar = () => {
                                 <i className="dropicon" style={{ transform: `rotate(${withdrawalDropdownIcon})` }} ><BsChevronDown /></i>
                             </div>
                             <div className="dropdown" style={{ display: withdrawalDropdown }}>
-                                <NavLink to="/withdrawal-report">
-                                    <div className="items" onClick={() => setCurrentPage("withdrawalReport")}>
-                                        <i><AiOutlineFileText /></i>
-                                        <h4 className="m-0">Withdrawal Report</h4>
-                                    </div>
-                                </NavLink>
 
+                                <div className="items" onClick={() => (setCurrentPage("withdrawalReport"), setActivePage(<WithdrawalReport />))}>
+                                    <i><AiOutlineFileText /></i>
+                                    <h4 className="m-0">Withdrawal Report</h4>
+                                </div>
                             </div>
                         </div>
-                        <NavLink to="/kyc">
-                            <div className={`items ${currentPage === "kyc" ? "activeSidebar" : "noclass"}`} onClick={() => setCurrentPage("kyc")}>
-                                <i><FaUserCheck /></i>
-                                <h4 className="m-0">KYC</h4>
-                            </div>
-                        </NavLink>
+
+                        <div className={`items ${currentPage === "kyc" ? "activeSidebar" : "noclass"}`} onClick={() => (setCurrentPage("kyc"), setActivePage(<KYC />))}>
+                            <i><FaUserCheck /></i>
+                            <h4 className="m-0">KYC</h4>
+                        </div>
+
                         {/* --------------------------------PIN--------------------------------- */}
 
                         <div className="dropdownitems" onClick={() => pinDropdown === "none" ? (setPinDropdown("block"), setPinDropdownIcon("180deg")) : (setPinDropdown("none"), setPinDropdownIcon("0deg"))}>
@@ -185,24 +201,23 @@ const Sidebar = () => {
                                 <i className="dropicon" style={{ transform: `rotate(${pinDropdownIcon})` }} ><BsChevronDown /></i>
                             </div>
                             <div className="dropdown" style={{ display: pinDropdown }}>
-                                <NavLink to="/pin-transfer">
-                                    <div className="items" onClick={() => setCurrentPage("pinTransfer")}>
-                                        <i><GiLetterBomb /></i>
-                                        <h4 className="m-0">Pin Transfer</h4>
-                                    </div>
-                                </NavLink>
-                                <NavLink to="/pin-history">
-                                    <div className="items" onClick={() => setCurrentPage("pinHistory")}>
-                                        <i><CgProfile /></i>
-                                        <h4 className="m-0">Pin History</h4>
-                                    </div>
-                                </NavLink>
-                                <NavLink to="/pinbox">
-                                    <div className="items" onClick={() => setCurrentPage("pinBox")}>
-                                        <i><CgProfile /></i>
-                                        <h4 className="m-0">PinBox</h4>
-                                    </div>
-                                </NavLink>
+
+                                <div className="items" onClick={() => (setCurrentPage("pinTransfer"), setActivePage(<PinTransfer />))}>
+                                    <i><GiLetterBomb /></i>
+                                    <h4 className="m-0">Pin Transfer</h4>
+                                </div>
+
+
+                                <div className="items" onClick={() => (setCurrentPage("pinHistory"), setActivePage(<PinHistory />))}>
+                                    <i><CgProfile /></i>
+                                    <h4 className="m-0">Pin History</h4>
+                                </div>
+
+                                <div className="items" onClick={() => (setCurrentPage("pinBox"), setActivePage(<PinBox />))}>
+                                    <i><CgProfile /></i>
+                                    <h4 className="m-0">PinBox</h4>
+                                </div>
+
                             </div>
                         </div>
                         {/* ------------------------------topup-------------------------------------------- */}
@@ -213,12 +228,12 @@ const Sidebar = () => {
                                 <i className="dropicon" style={{ transform: `rotate(${topupDropdownIcon})` }} ><BsChevronDown /></i>
                             </div>
                             <div className="dropdown" style={{ display: topupDropdown }}>
-                                <NavLink to="member-topup">
-                                    <div className="items" onClick={() => setCurrentPage("memberTopup")}>
-                                        <i><GiLetterBomb /></i>
-                                        <h4 className="m-0">Member Topup</h4>
-                                    </div>
-                                </NavLink>
+
+                                <div className="items" onClick={() => (setCurrentPage("memberTopup"), setActivePage(<MemberTopup />))}>
+                                    <i><GiLetterBomb /></i>
+                                    <h4 className="m-0">Member Topup</h4>
+                                </div>
+
                             </div>
                         </div>
 
@@ -230,86 +245,80 @@ const Sidebar = () => {
                                 <i className="dropicon" style={{ transform: `rotate(${payoutReportDropdownIcon})` }} ><BsChevronDown /></i>
                             </div>
                             <div className="dropdown" style={{ display: payoutReportDropdown }}>
-                                <NavLink to="/direct-income">
-                                    <div className="items" onClick={() => setCurrentPage("directIncome")}>
-                                        <i><GiLetterBomb /></i>
-                                        <h4 className="m-0">Direct Income</h4>
-                                    </div>
-                                </NavLink>
-                                <NavLink to="/level-income" >
-                                    <div className="items" onClick={() => setCurrentPage("levelIncome")}>
-                                        <i><GiLetterBomb /></i>
-                                        <h4 className="m-0">Level Income</h4>
-                                    </div>
-                                </NavLink>
-                                <NavLink to="/reward-income" >
-                                    <div className="items" onClick={() => setCurrentPage("rewardIncome")}>
-                                        <i><GiLetterBomb /></i>
-                                        <h4 className="m-0">Reward Income</h4>
-                                    </div>
-                                </NavLink>
+
+                                <div className="items" onClick={() => (setCurrentPage("directIncome"), setActivePage(<DirectIncome />))}>
+                                    <i><GiLetterBomb /></i>
+                                    <h4 className="m-0">Direct Income</h4>
+                                </div>
+
+                                <div className="items" onClick={() => (setCurrentPage("levelIncome"), setActivePage(<LevelIncome />))}>
+                                    <i><GiLetterBomb /></i>
+                                    <h4 className="m-0">Level Income</h4>
+                                </div>
+
+                                <div className="items" onClick={() => (setCurrentPage("rewardIncome"), setActivePage(<RewardIncome />))}>
+                                    <i><GiLetterBomb /></i>
+                                    <h4 className="m-0">Reward Income</h4>
+                                </div>
+
                             </div>
                         </div>
 
                         {/* -----------------------------------------------------------------------------------------------*/}
-                        <NavLink to="/orders">
-                            <div className={`items ${currentPage === "orders" ? "activeSidebar" : "noclass"}`} onClick={() => setCurrentPage("orders")}>
-                                <i><BsFillCartCheckFill /></i>
-                                <h4 className="m-0">Orders</h4>
-                            </div>
-                        </NavLink>
+
+                        <div className={`items ${currentPage === "orders" ? "activeSidebar" : "noclass"}`} onClick={() => (setCurrentPage("orders"), setActivePage(<Orders />))}>
+                            <i><BsFillCartCheckFill /></i>
+                            <h4 className="m-0">Orders</h4>
+                        </div>
+
 
                         <div className="items">
                             <i><BiRegistered /></i>
                             <h4 className="m-0">Register New User</h4>
                         </div>
-                        <NavLink to="/rewards">
-                            <div className={`items ${currentPage === "rewards" ? "activeSidebar" : "noclass"}`} onClick={() => setCurrentPage("rewards")}>
-                                <i><AiFillGift /></i>
-                                <h4 className="m-0">Rewards</h4>
-                            </div>
-                        </NavLink>
-                        <NavLink to="/report">
-                            <div className={`items ${currentPage === "report" ? "activeSidebar" : "noclass"}`} onClick={() => setCurrentPage("report")}>
-                                <i><TbReport /></i>
-                                <h4 className="m-0">Report</h4>
-                            </div>
-                        </NavLink>
 
-                        <NavLink to="/news-event">
-                            <div className={`items ${currentPage === "newsEvent" ? "activeSidebar" : "noclass"}`} onClick={() => setCurrentPage("newsEvent")}>
-                                <i><ImNewspaper /></i>
-                                <h4 className="m-0">News & Event</h4>
-                            </div>
-                        </NavLink>
+                        <div className={`items ${currentPage === "rewards" ? "activeSidebar" : "noclass"}`} onClick={() => (setCurrentPage("rewards"), setActivePage(<Rewards />))}>
+                            <i><AiFillGift /></i>
+                            <h4 className="m-0">Rewards</h4>
+                        </div>
 
-                        <NavLink to="/support">
-                            <div className={`items ${currentPage === "support" ? "activeSidebar" : "noclass"}`} onClick={() => setCurrentPage("support")}>
-                                <i><MdSupportAgent /></i>
-                                <h4 className="m-0">Support</h4>
-                            </div>
-                        </NavLink>
-                        <NavLink to="/check">
-                            <div className={`items ${currentPage === "logout" ? "activeSidebar" : "noclass"}`} onClick={() => setCurrentPage("logout")}>
-                                <i><IoIosLogOut /></i>
-                                <h4 className="m-0">Logout</h4>
-                            </div>
-                        </NavLink>
+                        <div className={`items ${currentPage === "report" ? "activeSidebar" : "noclass"}`} onClick={() => (setCurrentPage("report"), setActivePage(<ReportPage />))}>
+                            <i><TbReport /></i>
+                            <h4 className="m-0">Report</h4>
+                        </div>
+
+                        <div className={`items ${currentPage === "newsEvent" ? "activeSidebar" : "noclass"}`} onClick={() => (setCurrentPage("newsEvent"), setActivePage(<NewsEvent />))}>
+                            <i><ImNewspaper /></i>
+                            <h4 className="m-0">News & Event</h4>
+                        </div>
+
+
+
+                        <div className={`items ${currentPage === "support" ? "activeSidebar" : "noclass"}`} onClick={() => (setCurrentPage("support"), setActivePage(<Support />))}>
+                            <i><MdSupportAgent /></i>
+                            <h4 className="m-0">Support</h4>
+                        </div>
+
+                        <div className={`items ${currentPage === "logout" ? "activeSidebar" : "noclass"}`} onClick={() => (setCurrentPage("logout"), setActivePage(<Check />))}>
+                            <i><IoIosLogOut /></i>
+                            <h4 className="m-0">Logout</h4>
+                        </div>
+
                     </section>
 
                 </div>
-                <div id="page-content" className="p-0" style={{ background: "#F4F7FC", minHeight: "100vh", marginLeft: toggle === "none" ? "0px" : "260px" }}>
+                <div id="page-content" className="p-0" style={{ background: "#F4F7FC", minHeight: "100vh", marginLeft: toggle === "-260px" ? "0px" : "260px" }}>
                     <div className="navMain">
                         <div className="topNavbar">
-                            <i onClick={() => toggle === "none" ? setToggle("block") : setToggle("none")} style={{ cursor: "pointer" }}> {toggle !== "none" ? <AiOutlineArrowLeft /> : <GiHamburgerMenu />}</i>
-                            <div style={{ marginRight: toggle === "none" ? "0px" : "260px" }}>
+                            <i onClick={() => toggle === "-260px" ? setToggle("0") : setToggle("-260px")} style={{ cursor: "pointer" }}> {toggle !== "-260px" ? <AiOutlineArrowLeft /> : <GiHamburgerMenu />}</i>
+                            <div style={{ marginRight: toggle === "-260px" ? "0px" : "260px" }}>
                                 {/* <h1>setting</h1> */}
                             </div>
                         </div>
                     </div>
 
                     <div style={{ marginTop: "80px" }} >
-                        <NavPages />
+                        {activePage}
                     </div>
                 </div>
             </Container >

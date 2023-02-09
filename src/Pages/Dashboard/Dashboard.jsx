@@ -14,7 +14,7 @@ import { RiFacebookFill } from "react-icons/ri"
 import { TiSocialTwitter } from "react-icons/ti"
 import { TiSocialLinkedin } from "react-icons/ti"
 import MoneyCard from "../../Component/MoneyCard/MoneyCard";
-import { ResponsiveContainer, LineChart, Line, BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
+import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 import DashboardCard from "../../Component/DashboardCard/DashboardCard";
 const data = [
     { label: 'January', income: 21, sales: 41 },

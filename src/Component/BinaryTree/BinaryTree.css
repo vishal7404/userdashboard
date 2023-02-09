@@ -14,21 +14,23 @@ hr {
 }
 
 .imgDiv {
-    width: 35px;
-    margin: auto;
+    width: 100%;
+    text-align: center;
     /* margin-bottom: 50px !important; */
 }
 
 .imgDiv hr {
-    /* height: 3px; */
-    color: #000;
+    width: 22px;
+    margin: 10px auto;
+    height: 1px;
 }
 
 .imgDiv img {
     /* border: 1px solid var(--primary);
     border-radius: 50%;
     padding: 4px; */
-    width: 100%;
+    margin-top: 4px;
+    width: 40px;
 }
 
 .hrVertical {
@@ -47,6 +49,7 @@ hr {
 .hrHorizontal {
     width: 50%;
     margin: 0 auto;
+    height: 1px;
 }
 
 .pr-0 {
@@ -63,7 +66,27 @@ hr {
     color: #ccc;
 }
 
+#dataTree p {
+    margin-bottom: -5px;
+    color: #153D77;
+    font-weight: 500;
+}
 
+#userId {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#dataTree p i {
+    margin-left: 5px;
+    font-size: 13px;
+    color: green;
+    display: none;
+}
+
+.userActive {}
 
 @media (max-width: 576px) {
     .hrVerticalOnImg {
@@ -87,10 +110,23 @@ hr {
         margin-top: 9px;
     }
 
-    .imgDiv {
+    .imgDiv img {
         width: 30px;
-        margin: auto;
         /* margin-bottom: 50px !important; */
+    }
+
+
+    #dataTree p {
+        margin-bottom: 0px;
+        color: #153D77;
+        font-weight: 400;
+        font-size: 8px !important;
+    }
+
+    .imgDiv hr {
+        width: 14px;
+        color: #000;
+        margin: 6px auto;
     }
 }
 

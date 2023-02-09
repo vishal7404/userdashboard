@@ -1,0 +1,161 @@
+.loginCol {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginCol h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #3f50b4;
+}
+
+.loginCol p {
+    text-align: center;
+    color: #555;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.loginFormDiv {
+    padding: 50px 100px;
+    width: 100%;
+}
+
+.loginForm input,
+.registerForm input {
+    width: 100%;
+    padding: 10px 15px;
+    outline: none;
+    border-radius: 3px;
+    font-size: 15px;
+    border-left: 4px solid #3f50b4 !important;
+    font-weight: 400;
+    color: #555;
+
+}
+
+.loginForm input:focus,
+.registerForm input:focus {
+    box-shadow: 1px 1px 5px 0px #3f50b4;
+}
+
+.loginTabs {
+    text-align: center;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 100px;
+}
+
+.loginTabs button {
+    padding: 7px 15px;
+    border: none;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.loginTabActive {
+    background: #3f50b4;
+    color: white;
+}
+
+.btnLogin {
+    background: #3f50b4;
+    color: white !important;
+    padding: 12px;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    width: 100%;
+    display: inline-block;
+    margin-top: 20px !important;
+    font-size: 18px !important;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none !important;
+}
+
+.btnLogin:hover {
+    color: white;
+    background: #313E8C;
+}
+
+.loginLeft {
+    display: flex;
+    align-items: center;
+    background-image: url("./../../Images/loginbg.jpg");
+    background-position: center center;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    min-height: 100vh;
+    background-color: rgb(17 25 68 / 54%);
+    background-blend-mode: overlay;
+}
+
+.loginContent {
+    padding: 0px 80px;
+}
+
+.loginLinkDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.loginLinkDiv p {
+    margin: 0;
+    margin-bottom: -3px;
+}
+
+.loginLinkDiv a {
+    font-size: 21px;
+    font-weight: 600;
+    color: #3f50b4;
+    margin-left: 3px;
+
+}
+
+.loginFormDiv img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid #3f50b4;
+    margin-bottom: 20px;
+}
+
+.loginContent h1 {
+    text-shadow: 0 0 20px #eeeeee, 0 0 30px #02A1FE, 0 0 40px #02A1FE, 0 0 50px #02A1FE, 0 0 60px #02A1FE, 0 0 70px #02A1FE, 0 0 80px #02A1FE;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.formError {
+    color: red;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.registerForm div label {
+    width: 100%;
+    margin-top: 8px;
+}
+
+@media (max-width: 767px) {
+    .loginLeft {
+        display: none;
+    }
+
+    .loginFormDiv {
+        padding: 20px
+    }
+}

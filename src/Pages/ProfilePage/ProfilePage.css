@@ -27,6 +27,9 @@
 .editProfileCard h3 {
     font-size: 20px;
     margin: 0;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: var(--navbarColor)
 }
 
 .editProfileCard {
@@ -44,10 +47,10 @@
 
 .editProfileCard button {
     padding: 7px 14px;
-    border: 1px solid #7952B3;
+    border: 1px solid var(--navbarColor);
     color: #fff;
     border-radius: 5px;
-    background-color: #7952B3;
+    background-color: var(--navbarColor);
     cursor: pointer;
     transition: all 0.5s;
     font-size: 17px;
@@ -69,10 +72,17 @@
 
 .profileUserDetail ul li {
     margin-bottom: 10px;
+    font-size: 15px;
+    color: #555;
+    font-weight: 500;
+
 }
 
 .profileUserDetail ul li b {
     margin-right: 5px;
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--navbarColor);
 }
 
 .editProfileCard img {
@@ -81,7 +91,7 @@
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    border: 2px solid var(--sideTextColorHover);
+    border: 2px solid var(--navbarColor);
     padding: 5px;
 }
 
